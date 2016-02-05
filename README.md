@@ -7,7 +7,10 @@ It will start the server in 9000 port
 
 # Overview
 
-play-java-cas-proxy is an application which exposes rest services on top of common data store, which can be accessed from other application on behalf of the logged in user context. The common data store is to maintain all the common data for other apps to perform correctly and to manage the crucial data with care. This helps other applications to avoid storing common data in application specific data store, so that they don't need a special synch mechanism to maintain it up to date with other applications.
+play-java-cas-proxy is an application which exposes rest services on top of a sample data store, which can be accessed from other application on behalf of the logged in user context.
+This is a sample project for play framework 2.4 integration with CAS proxy authentication mechanism. This project exposes all rest API's which are protected by cas proxy authentication. the steps to generate the proxy is given below.
+
+Note: This project contains only backend API and does not implemented yet to handle sessions as of now.
 
 # CAS Proxy Ticket
 
