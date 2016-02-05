@@ -1,0 +1,29 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+GET     /swagger                    controllers.Application.swagger()
+#GET     /api/employees              controllers.EmployeeController.list()
+GET     /api/employee/:employeeId   @controllers.EmployeeController.getEmployeeDetailsByEmployeeId(employeeId: String)
+GET     /api/employee/              @controllers.EmployeeController.getCurrentEmployeeProfile()
+GET     /api/employee/email/:email  @controllers.EmployeeController.getEmployeeByEmail(email: String)
+GET     /api/employee/fromEmpId/:fromEmpId/toEmpId/:toEmpId  @controllers.EmployeeController.getEmployeeDetailsWithPagination(fromEmpId: Int, toEmpId: Int, page: Int ?= 1, pageSize: Int ?= 10)
+GET     /api/employee/reportees/:email  @controllers.EmployeeController.getReportees(email: String)
+
+# Map routes related to CAS Auth
+POST    /logout                     @controllers.UserController.logout()
+GET     /callback                   @controllers.UserController.callback()
+#GET     /callback                   @org.pac4j.play.CallbackController.callback()
+#POST    /callback                   @org.pac4j.play.CallbackController.callback()
+#GET     /casProxyCallback           @org.pac4j.play.CallbackController.callback()
+#POST    /casProxyCallback           @org.pac4j.play.CallbackController.callback()
+#GET     /logout                     @org.pac4j.play.ApplicationLogoutController.logout()
+
+# Swagger
+GET     /api/api-docs                   controllers.ApiHelpController.getResources
+#GET     /api-docs/api/employees     controllers.ApiHelpController.getResource(path = "/api/employees")
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
